@@ -5,9 +5,9 @@
  * @license MTI
  * 
  * This CLI Tool loads client sdk generators for the selected library
- * currently the only support is for Angular2 but drivers can be
+ * currently the only support is for Angular2+ but drivers can be
  * selected in order to work in different environments like nativescript
- * and angular unicersal.
+ * and angular universal.
  */
 var path = require('path');
 var semver = require('semver');
@@ -32,7 +32,7 @@ var argv = optimist
   .describe('f', 'Generate only FireLoop SDK + Auth Services')
   .describe('q', 'quiet mode - no console output (forces -w)')
   .describe('t', 'Enable Typescript default true ( React Only )')
-  .default('l', 'angular2')
+  .default('l', 'angular')
   .default('d', 'ng2web')
   .default('i', 'enabled')
   .default('w', 'disabled')
@@ -93,7 +93,7 @@ var app = require(appFile);
 // Default Values
 var context = {
   app: app,
-  framework: argv['l'] || 'angular2',
+  framework: argv['l'] || 'angular',
   moduleName: argv['module-name'] || 'sdk',
   apiUrl: argv['url'] || app.get('restApiRoot') || '/api',
   outputFolder: argv._[1],
